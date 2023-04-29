@@ -9,12 +9,12 @@ import SwiftUI
 import Combine
 
 class DessertViewModel: ObservableObject {
-    @Published var dataSource: DessertRowViewModel?
+    @Published var dataSource: MealList?
     private var disposables = Set<AnyCancellable>()
     
     func refresh() {
       decode()
-        .map(DessertRowViewModel.init)
+//        .map(DessertRowViewModel.init)
         .receive(on: DispatchQueue.main)
         .sink(receiveCompletion: { [weak self] value in
           guard let self = self else { return }
@@ -34,6 +34,10 @@ class DessertViewModel: ObservableObject {
 
 struct DessertRowViewModel {
     private let item: DessertModel
+    
+    var name: String {
+        return item.strMeal
+    }
     init(item: DessertModel) {
       self.item = item
     }
@@ -53,8 +57,11 @@ struct DessertView: View {
 
 private extension DessertView {
   func content() -> some View {
-    if let viewModel = viewModel.dataSource {
-      return AnyView(details(for: viewModel))
+    if let mealList = viewModel.dataSource {
+        for dessert in mealList.meals {
+            return AnyView(details(for: DessertRowViewModel( item: dessert)))
+        }
+        return AnyView(loading)
     } else {
       return AnyView(loading)
     }

@@ -17,24 +17,29 @@ enum APIError: Error {
 struct DessertModel: Decodable, Equatable {
   let strMeal: String
   let strMealThumb: String
-  let idMeal: Int
+  let idMeal: String
+}
+
+struct MealList: Decodable {
+    let meals: [DessertModel]
 }
 
 extension DessertModel: Identifiable {
   var id: String { strMeal }
 }
-
-func decode() -> AnyPublisher<DessertModel, APIError> {
+let decoder = JSONDecoder()
+func decode() -> AnyPublisher<MealList, APIError> {
   guard let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert") else {
     fatalError("Error on creating url")
   }
-    let decoder = JSONDecoder()
-    decoder.keyDecodingStrategy = .convertFromSnakeCase
+//    decoder.keyDecodingStrategy = .convertFromSnakeCase
   return URLSession.shared.dataTaskPublisher(for: url)
     .mapError { _ in APIError.downloadError }
     .map { data, _ in data }
-    .decode(type: DessertModel.self, decoder: decoder)
-    .mapError { _ in APIError.decodingError }
+    .decode(type: MealList.self, decoder: decoder)
+    .mapError { error in
+        print(error)
+        return APIError.decodingError }
     .eraseToAnyPublisher()
 }
 
