@@ -7,13 +7,13 @@
 
 import Foundation
 import Combine
+
 class DessertViewModel: ObservableObject {
     @Published var dataSource: MealList?
     private var disposables = Set<AnyCancellable>()
     
     func refresh() {
       decode()
-//        .map(DessertRowViewModel.init)
         .receive(on: DispatchQueue.main)
         .sink(receiveCompletion: { [weak self] value in
           guard let self = self else { return }
@@ -23,9 +23,9 @@ class DessertViewModel: ObservableObject {
           case .finished:
             break
           }
-        }, receiveValue: { [weak self] dessert in
+        }, receiveValue: { [weak self] mealList in
             guard let self = self else { return }
-            self.dataSource = dessert
+            self.dataSource = mealList
         })
         .store(in: &disposables)
     }

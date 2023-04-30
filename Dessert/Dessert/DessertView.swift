@@ -16,29 +16,28 @@ struct DessertView: View {
     }
     
     var body: some View {
-        List(content: content)
-            .onAppear(perform: viewModel.refresh)
+        List {
+            if let mealList = viewModel.dataSource {
+                ForEach(mealList.meals, id: \.id) {dessert in
+                    dessertRow(dessert)
+                }
+            } else {
+                AnyView(loading)
+            }
+        }
+        .onAppear(perform: viewModel.refresh)
     }
 }
 
 private extension DessertView {
-  func content() -> some View {
-    if let mealList = viewModel.dataSource {
-        for dessert in mealList.meals {
-            return AnyView(details(for: DessertRowViewModel( item: dessert)))
-        }
-        return AnyView(loading)
-    } else {
-      return AnyView(loading)
+    
+    func dessertRow(_ meal: DessertModel) -> some View {
+        let viewmodel = DessertRowViewModel(item: meal)
+        return AnyView(DessertRow(viewModel: viewmodel))
     }
-  }
-
-  func details(for viewModel: DessertRowViewModel) -> some View {
-    DessertRow(viewModel: viewModel)
-  }
-
-  var loading: some View {
-    Text("Loadings weather...")
-      .foregroundColor(.gray)
-  }
+    
+    var loading: some View {
+        Text("Loading data...")
+            .foregroundColor(.gray)
+    }
 }
