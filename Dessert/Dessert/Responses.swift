@@ -18,5 +18,5 @@ struct DessertModel: Decodable, Equatable {
 }
 
 extension DessertModel: Identifiable {
-  var id: String { strMeal }
+  var id: String { idMeal }
 }
