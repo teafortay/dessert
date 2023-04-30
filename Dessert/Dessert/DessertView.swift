@@ -18,7 +18,8 @@ struct DessertView: View {
     var body: some View {
         List {
             if let mealList = viewModel.dataSource {
-                ForEach(mealList.meals, id: \.id) {dessert in
+                let meals = mealList.meals.sorted(by: viewModel.alphabetical)
+                ForEach(meals, id: \.id) {dessert in
                     dessertRow(dessert)
                 }
             } else {

@@ -12,6 +12,10 @@ class DessertViewModel: ObservableObject {
     @Published var dataSource: MealList?
     private var disposables = Set<AnyCancellable>()
     
+    func alphabetical(first: DessertModel, second: DessertModel) -> Bool{
+        return first.strMeal < second.strMeal
+    }
+    
     func refresh() {
       decode()
         .receive(on: DispatchQueue.main)
