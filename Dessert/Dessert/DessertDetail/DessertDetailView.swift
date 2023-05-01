@@ -46,22 +46,18 @@ struct DessertDetailView: View {
     
     func ingredients() -> some View {
         let ingredients = viewModel.buildIngredients()
+        let measurements = viewModel.buildMeasurements()
         var displayValues: [String] = []
+        
         for i in 0...19 {
-            if ingredients[i] != "" {
-                displayValues.append(ingredients[i])
+            if ingredients[i] != ""  || measurements[i] != ""{
+                displayValues.append("\(ingredients[i]), \(measurements[i])")
             }
         }
         return VStack {
             ForEach(displayValues, id: \.self) { value in
-                Text(value)
+                Text("- \(value)")
             }
         }
     }
 }
-//
-//struct DessertDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DessertDetailView()
-//    }
-//}

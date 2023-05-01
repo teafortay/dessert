@@ -40,14 +40,6 @@ class DessertDetailViewModel: ObservableObject {
         return recipe?.strMeal ?? "No meal name"
     }
     
-//    var ingredients: [Int: String] {
-//        return buildIngredients()
-//    }
-//
-//    var measurments: [Int: String] {
-//        return buildMeasurements()
-//    }
-    
     var instructions: String {
         return recipe?.strInstructions ?? "No instructions"
     }
@@ -85,34 +77,36 @@ class DessertDetailViewModel: ObservableObject {
         }
     }
         
-    func buildMeasurements() -> [Int: String] {
+    func buildMeasurements() -> [String] {
         if let recipe = recipe {
-            let measurements:  [Int : String] = [
-                1: recipe.strMeasure1 ?? "",
-                2: recipe.strMeasure2 ?? "",
-                3: recipe.strMeasure3 ?? "",
-                4: recipe.strMeasure4 ?? "",
-                5: recipe.strMeasure5 ?? "",
-                6: recipe.strMeasure6 ?? "",
-                7: recipe.strMeasure7 ?? "",
-                8: recipe.strMeasure8 ?? "",
-                9: recipe.strMeasure9 ?? "",
-                10: recipe.strMeasure10 ?? "",
-                11: recipe.strMeasure11 ?? "",
-                12: recipe.strMeasure12 ?? "",
-                13: recipe.strMeasure13 ?? "",
-                14: recipe.strMeasure14 ?? "",
-                15: recipe.strMeasure15 ?? "",
-                16: recipe.strMeasure16 ?? "",
-                17: recipe.strMeasure17 ?? "",
-                18: recipe.strMeasure18 ?? "",
-                19: recipe.strMeasure19 ?? "",
-                20: recipe.strMeasure20 ?? "",
+            let measurements: [String] = [
+                recipe.strMeasure1 ?? "",
+                recipe.strMeasure2 ?? "",
+                recipe.strMeasure3 ?? "",
+                recipe.strMeasure4 ?? "",
+                recipe.strMeasure5 ?? "",
+                recipe.strMeasure6 ?? "",
+                recipe.strMeasure7 ?? "",
+                recipe.strMeasure8 ?? "",
+                recipe.strMeasure9 ?? "",
+                recipe.strMeasure10 ?? "",
+                recipe.strMeasure11 ?? "",
+                recipe.strMeasure12 ?? "",
+                recipe.strMeasure13 ?? "",
+                recipe.strMeasure14 ?? "",
+                recipe.strMeasure15 ?? "",
+                recipe.strMeasure16 ?? "",
+                recipe.strMeasure17 ?? "",
+                recipe.strMeasure18 ?? "",
+                recipe.strMeasure19 ?? "",
+                recipe.strMeasure20 ?? "",
             ]
-            let result = measurements.filter({ $0.value != "" })
-            return result
+            return measurements
         } else {
-            return [:]
+            return  ["", "", "", "", "",
+                     "", "", "", "", "",
+                     "", "", "", "", "",
+                     "", "", "", "", ""]
         }
         
     }
