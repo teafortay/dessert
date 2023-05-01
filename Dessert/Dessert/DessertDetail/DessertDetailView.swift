@@ -20,6 +20,21 @@ struct DessertDetailView: View {
         ScrollView {
             VStack {
                 Text(viewModel.name)
+                    .bold()
+                
+                HStack {
+                    Text("Ingredients:")
+                    Spacer()
+                }
+                .padding()
+                    ingredients()
+                
+                HStack {
+                    Text("Instructions:")
+                    Spacer()
+                }
+                .padding()
+                
                 Text(viewModel.instructions)
                     .padding()
             }
@@ -27,6 +42,21 @@ struct DessertDetailView: View {
             .onAppear {
                 viewModel.fetchRecipe(id: viewModel.idMeal)
             }
+    }
+    
+    func ingredients() -> some View {
+        let ingredients = viewModel.buildIngredients()
+        var displayValues: [String] = []
+        for i in 0...19 {
+            if ingredients[i] != "" {
+                displayValues.append(ingredients[i])
+            }
+        }
+        return VStack {
+            ForEach(displayValues, id: \.self) { value in
+                Text(value)
+            }
+        }
     }
 }
 //

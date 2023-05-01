@@ -66,7 +66,7 @@ struct DessertDetail: Decodable {
     let strMeasure7: String?
     let strMeasure8: String?
     let strMeasure9: String?
-    let strMeasure10: String??
+    let strMeasure10: String?
     let strMeasure11: String?
     let strMeasure12: String?
     let strMeasure13: String?
