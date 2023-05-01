@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4A274B1629FAF09800AF949C /* DessertApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A274B1529FAF09800AF949C /* DessertApp.swift */; };
-		4A274B1829FAF09800AF949C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A274B1729FAF09800AF949C /* ContentView.swift */; };
 		4A274B1A29FAF09A00AF949C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A274B1929FAF09A00AF949C /* Assets.xcassets */; };
 		4A274B1D29FAF09A00AF949C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A274B1C29FAF09A00AF949C /* Preview Assets.xcassets */; };
 		4A274B3E29FEB74500AF949C /* DessertRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A274B3D29FEB74500AF949C /* DessertRowView.swift */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		4A274B1229FAF09800AF949C /* Dessert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dessert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A274B1529FAF09800AF949C /* DessertApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertApp.swift; sourceTree = "<group>"; };
-		4A274B1729FAF09800AF949C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4A274B1929FAF09A00AF949C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A274B1C29FAF09A00AF949C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4A274B3D29FEB74500AF949C /* DessertRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertRowView.swift; sourceTree = "<group>"; };
@@ -70,16 +68,10 @@
 			isa = PBXGroup;
 			children = (
 				4A274B1529FAF09800AF949C /* DessertApp.swift */,
-				4A274B4929FEBC0D00AF949C /* Fetcher.swift */,
-				4A274B4729FEBB7000AF949C /* Responses.swift */,
-				4A274B4529FEBAA700AF949C /* APIError.swift */,
-				4A274B1729FAF09800AF949C /* ContentView.swift */,
-				4A274B4329FEB9EE00AF949C /* DessertViewModel.swift */,
-				4A274B4129FEB95A00AF949C /* DessertRowViewModel.swift */,
-				4A274B3F29FEB85700AF949C /* DessertView.swift */,
-				4A274B3D29FEB74500AF949C /* DessertRowView.swift */,
-				4A274B4B29FF254E00AF949C /* DessertDetailView.swift */,
-				4A274B4D29FF259C00AF949C /* DessertDetailViewModel.swift */,
+				4A274B4F29FF8BE900AF949C /* Networking */,
+				4A274B5229FF8D5B00AF949C /* DessertMenu */,
+				4A274B5029FF8CB000AF949C /* DessertRow */,
+				4A274B5129FF8D0200AF949C /* DessertDetail */,
 				4A274B1929FAF09A00AF949C /* Assets.xcassets */,
 				4A274B1B29FAF09A00AF949C /* Preview Content */,
 			);
@@ -92,6 +84,43 @@
 				4A274B1C29FAF09A00AF949C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4A274B4F29FF8BE900AF949C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4A274B4929FEBC0D00AF949C /* Fetcher.swift */,
+				4A274B4529FEBAA700AF949C /* APIError.swift */,
+				4A274B4729FEBB7000AF949C /* Responses.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		4A274B5029FF8CB000AF949C /* DessertRow */ = {
+			isa = PBXGroup;
+			children = (
+				4A274B4129FEB95A00AF949C /* DessertRowViewModel.swift */,
+				4A274B3D29FEB74500AF949C /* DessertRowView.swift */,
+			);
+			path = DessertRow;
+			sourceTree = "<group>";
+		};
+		4A274B5129FF8D0200AF949C /* DessertDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4A274B4B29FF254E00AF949C /* DessertDetailView.swift */,
+				4A274B4D29FF259C00AF949C /* DessertDetailViewModel.swift */,
+			);
+			path = DessertDetail;
+			sourceTree = "<group>";
+		};
+		4A274B5229FF8D5B00AF949C /* DessertMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4A274B4329FEB9EE00AF949C /* DessertViewModel.swift */,
+				4A274B3F29FEB85700AF949C /* DessertView.swift */,
+			);
+			path = DessertMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +193,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A274B1829FAF09800AF949C /* ContentView.swift in Sources */,
 				4A274B4E29FF259C00AF949C /* DessertDetailViewModel.swift in Sources */,
 				4A274B4A29FEBC0D00AF949C /* Fetcher.swift in Sources */,
 				4A274B4C29FF254E00AF949C /* DessertDetailView.swift in Sources */,
