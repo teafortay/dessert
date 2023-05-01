@@ -18,30 +18,25 @@ struct DessertDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .center, spacing: 10) {
                 Text(viewModel.name)
                     .bold()
                 image
-                    .frame(width: 50, height: 50)
-                    .padding()
-//                    .scaledToFit()
                 
                 HStack {
                     Text("Ingredients:")
                     Spacer()
                 }
-                .padding()
                     ingredients()
                 
                 HStack {
                     Text("Instructions:")
                     Spacer()
                 }
-                .padding()
                 
                 Text(viewModel.instructions)
-                    .padding()
             }
+            .padding()
         }
             .onAppear {
                 viewModel.fetchRecipe(id: viewModel.idMeal)
@@ -67,6 +62,9 @@ struct DessertDetailView: View {
     
     @ViewBuilder
     var image: some View {
-        AsyncImage(url: URL(string: viewModel.imageUrl))
+        AsyncImage(url: URL(string: viewModel.imageUrl)) { im in
+            im.image?.resizable()
+        }
+        .scaledToFit()
     }
 }
