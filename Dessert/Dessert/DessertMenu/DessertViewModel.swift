@@ -18,7 +18,7 @@ class DessertViewModel: ObservableObject {
     }
     
     func refresh() {
-      decode()
+      fetchMeals()
         .receive(on: DispatchQueue.main)
         .sink(receiveCompletion: { [weak self] value in
           guard let self = self else { return }

@@ -45,6 +45,7 @@ private extension DessertView {
             let viewmodel = DessertDetailViewModel(idMeal: idMeal)
             return AnyView(DessertDetailView(viewModel: viewmodel))
     }
+    
     var loading: some View {
         Text("Loading data...")
             .foregroundColor(.gray)
