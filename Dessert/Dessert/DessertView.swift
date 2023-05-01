@@ -21,11 +21,8 @@ struct DessertView: View {
                 if let mealList = viewModel.dataSource {
                     let meals = mealList.meals.sorted(by: viewModel.alphabetical)
                     ForEach(meals, id: \.id) {dessert in
-                        NavigationLink(destination:dessertDetail(dessert)) {
+                        NavigationLink(destination:dessertDetail(dessert.idMeal)) {
                             dessertRow(dessert)
-                        }
-                        .onTapGesture {
-                            viewModel.fetchRecipe(id: dessert.idMeal)
                         }
                     }
                 } else {
@@ -44,13 +41,9 @@ private extension DessertView {
         return AnyView(DessertRow(viewModel: viewmodel))
     }
     
-    func dessertDetail(_ meal: DessertModel) -> some View {
-        if let details = viewModel.details {
-            let viewmodel = DessertDetailViewModel(item: details.meals[0])
+    func dessertDetail(_ idMeal: String) -> some View {
+            let viewmodel = DessertDetailViewModel(idMeal: idMeal)
             return AnyView(DessertDetailView(viewModel: viewmodel))
-        } else {
-            return AnyView(loading)
-        }
     }
     var loading: some View {
         Text("Loading data...")
