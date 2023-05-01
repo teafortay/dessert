@@ -17,7 +17,13 @@ struct DessertDetailView: View {
     }
     
     var body: some View {
-        Text(viewModel.recipe?.strMeal ?? "no name")
+        ScrollView {
+            VStack {
+                Text(viewModel.name)
+                Text(viewModel.instructions)
+                    .padding()
+            }
+        }
             .onAppear {
                 viewModel.fetchRecipe(id: viewModel.idMeal)
             }

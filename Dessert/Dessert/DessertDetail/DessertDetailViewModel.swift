@@ -11,7 +11,6 @@ import Combine
 class DessertDetailViewModel: ObservableObject {
     
     var idMeal: String
-    
     @Published var recipe: DessertDetail?
     private var disposables = Set<AnyCancellable>()
     
@@ -37,4 +36,11 @@ class DessertDetailViewModel: ObservableObject {
             .store(in: &disposables)
     }
     
+    var name: String {
+        return recipe?.strMeal ?? "No meal name"
+    }
+    
+    var instructions: String {
+        return recipe?.strInstructions ?? "No instructions"
+    }
 }
