@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class DessertDetailViewModel: ObservableObject {
     
@@ -38,6 +39,10 @@ class DessertDetailViewModel: ObservableObject {
     
     var name: String {
         return recipe?.strMeal ?? "No meal name"
+    }
+    
+    var imageUrl: String {
+        return recipe?.strMealThumb ?? "https://example.com/icon.png"
     }
     
     var instructions: String {

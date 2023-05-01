@@ -21,6 +21,10 @@ struct DessertDetailView: View {
             VStack {
                 Text(viewModel.name)
                     .bold()
+                image
+                    .frame(width: 50, height: 50)
+                    .padding()
+//                    .scaledToFit()
                 
                 HStack {
                     Text("Ingredients:")
@@ -50,7 +54,7 @@ struct DessertDetailView: View {
         var displayValues: [String] = []
         
         for i in 0...19 {
-            if ingredients[i] != ""  || measurements[i] != ""{
+            if ingredients[i] != ""  && measurements[i] != "" {
                 displayValues.append("\(ingredients[i]), \(measurements[i])")
             }
         }
@@ -59,5 +63,10 @@ struct DessertDetailView: View {
                 Text("- \(value)")
             }
         }
+    }
+    
+    @ViewBuilder
+    var image: some View {
+        AsyncImage(url: URL(string: viewModel.imageUrl))
     }
 }
