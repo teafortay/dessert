@@ -16,17 +16,21 @@ struct DessertView: View {
     }
     
     var body: some View {
-        List {
-            if let mealList = viewModel.dataSource {
-                let meals = mealList.meals.sorted(by: viewModel.alphabetical)
-                ForEach(meals, id: \.id) {dessert in
-                    dessertRow(dessert)
+        NavigationView {
+            List {
+                if let mealList = viewModel.dataSource {
+                    let meals = mealList.meals.sorted(by: viewModel.alphabetical)
+                    ForEach(meals, id: \.id) {dessert in
+                        NavigationLink(destination:DessertDetailView()) {
+                            dessertRow(dessert)
+                        }
+                    }
+                } else {
+                    AnyView(loading)
                 }
-            } else {
-                AnyView(loading)
             }
+            .onAppear(perform: viewModel.refresh)
         }
-        .onAppear(perform: viewModel.refresh)
     }
 }
 
