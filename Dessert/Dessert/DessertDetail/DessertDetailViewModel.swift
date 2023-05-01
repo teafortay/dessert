@@ -12,7 +12,7 @@ class DessertDetailViewModel: ObservableObject {
     
     var idMeal: String
     
-    @Published var details: DetailsList?
+    @Published var recipe: DessertDetail?
     private var disposables = Set<AnyCancellable>()
     
     init(idMeal: String) {
@@ -26,23 +26,15 @@ class DessertDetailViewModel: ObservableObject {
               guard let self = self else { return }
               switch value {
               case .failure:
-                self.details = nil
+                self.recipe = nil
               case .finished:
                 break
               }
             }, receiveValue: { [weak self] mealList in
                 guard let self = self else { return }
-                self.details = mealList
+                self.recipe = mealList.meals[0]
             })
             .store(in: &disposables)
     }
     
-    var name: String {
-        if let details = details?.meals {
-            let item = details[0]
-            return item.strMeal
-        } else {
-            return "loads"
-        }
-    }
 }
